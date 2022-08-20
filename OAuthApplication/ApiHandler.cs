@@ -1,10 +1,4 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Net;
-using System.Net.Http.Formatting;
-using System.Net.Http.Headers;
-using System.Security.Cryptography;
-using System.Text;
+﻿using System.Net.Http.Headers;
 
 namespace OAuthApplication;
 
@@ -12,9 +6,11 @@ public class ApiHandler
 {
     public static HttpClient ApiClient { get; set; } = new HttpClient();
 
-    private static string client_id = "CLIENT_ID";
-    private static string client_secret = "CLIENT_SECRET";
-    private static string tenant_id = "TENANT_ID";
+    //These values can be found in your azure ad graph application
+    private static readonly string tenant_id = Secrets.tenant_id;
+    private static readonly string client_id = Secrets.client_id;
+
+    private static readonly string client_secret = Secrets.client_secret;
 
     public static void InitializeClient()
     {
